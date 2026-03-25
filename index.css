@@ -1,0 +1,283 @@
+:root {
+  --margin-top-section: 20px;
+  --height-header: 70px;
+  --height-footer: 50px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: black;
+  color: white;
+  overflow-x: hidden;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  height: var(--height-header);
+  width: 100%;
+  border-bottom: 2px red solid;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+  justify-content: center;
+}
+
+h1 {
+  font-weight: normal;
+  text-align: center;
+  margin: 0;
+}
+
+section {
+  margin-top: calc(var(--margin-top-section) + var(--height-header));
+  width: 50%;
+  margin-left: 25%;
+  min-height: calc(100vh - var(--margin-top-section) - var(--height-header) - var(--height-footer));
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer {
+  background-color: black;
+  border-top: 2px greenyellow solid;
+  width: 100%;
+  height: var(--height-footer);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+footer p {
+  margin: 0;
+}
+
+@keyframes turn-loader {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.loader {
+  position: absolute;
+  top: calc(50% - 15px);
+  left: calc(50% - 15px);
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  border-top: 4px solid greenyellow;
+  border-bottom: 4px solid greenyellow;
+  border-left: 4px solid red;
+  border-right: 4px solid red;
+  animation: turn-loader 1000ms linear infinite;
+}
+
+.green-illumination:hover {
+  box-shadow: 0px 0px 7px 2px greenyellow;
+}
+
+.red-illumination:hover {
+  box-shadow: 0px 0px 7px 2px red;
+ }
+
+.disabled {
+  display: none !important;
+}
+
+.disabled-but-visible {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.translate-null {
+  transform: translateY(0);
+}
+
+.border-green {
+  border-color: greenyellow !important;
+}
+
+.border-red {
+  border-color: red !important;
+}
+
+@media (max-width: 1200px) {
+  section {
+    width: 70%;
+    margin-left: 15%;
+  }
+}
+
+@media (max-width: 800px) {
+  section {
+    width: 90%;
+    margin-left: 5%;
+  }
+}
+
+@media (max-width: 560px) {
+  section {
+    height: auto;
+  }
+}
+form {
+  margin: 40px 0px;
+  border-top: 2px solid white;
+  padding-top: 20px;
+}
+
+canvas {
+  cursor: grab;
+}
+
+.personnages {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.personnages img {
+  object-fit: contain;
+  width: 100%;
+}
+
+#div-canvas-vador, #div-canvas-luke {
+  height: 400px;
+  width: 100%;
+}
+
+.personnage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.personnage button {
+  /* margin-top: 40px; */
+  padding: 10px;
+  width: 200px;
+  background-color: black;
+  color: white;
+  border: 2px red solid;
+  border-radius: 15px;
+  transition: 250ms;
+  cursor: pointer;
+}
+
+.luke {
+  position: relative;
+  animation: moveFromRight 500ms forwards cubic-bezier(.85,0,.25,.99);
+  right: -100%;
+}
+
+.luke button {
+  border-color: greenyellow;
+}
+
+.vador {
+  position: relative;
+  animation-name: moveFromLeft;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.85,0,.25,.99);
+  left: -100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 200ms;
+  transform: translateY(-100px);
+}
+
+form label {
+  width: 20%;
+  min-width: 80px;
+}
+
+form button {
+  border: 2px white solid;
+  color: white;
+  background-color: black;
+  padding: 10px;
+  border-radius: 20px;
+  width: 300px;
+  margin: 20px;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+.champs {
+  /* width: 300px; */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.champs input {
+  width: 80%;
+  outline: none;
+  color: white;
+  background-color: black;
+  border: 2px white solid;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.color input {
+  width: 50px;
+  padding: 2px;
+  border-radius: 0;
+}
+
+.color label {
+  min-width: 150px;
+}
+
+@media (max-width: 560px) {
+  .personnages {
+    flex-direction: column;
+  }
+  .personnage {
+    width: 100%;
+  }
+  .luke {
+    margin: 30px 0px;
+  }
+  form button {
+    width: 250px;
+  }
+}
+
+@keyframes moveFromLeft {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes moveFromRight {
+  0% {
+    right: -100%;
+  }
+
+  100% {
+    right: 0;
+  }
+}
