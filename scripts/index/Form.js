@@ -74,7 +74,8 @@ export default class Form {
   onClickSubmitButton(event) {
     event.preventDefault();
     localStorage.setItem("pseudo", this.inputs[0].value);
-    window.location.href = "/combat.html";
+    const base = window.location.pathname.replace(/\/[^/]*$/, ""); // removes current file
+    window.location.href = `${base}/combat.html`;
   }
   
   checkInputsWithEvent() {
